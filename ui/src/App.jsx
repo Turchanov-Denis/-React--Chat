@@ -1,17 +1,20 @@
 import { useState } from 'react'
-import { io } from 'socket.io-client'
 import './scss/style.scss'
 import JoinComponent from './component/JoinComponent';
-
+import { useSelector, useDispatch } from 'react-redux'
+import { changeAuth } from './redux/mainSlicer';
 
 function App() {
-  const connectSocket = () => { io('http://localhost:3000') }
-
-
+  const auth = useSelector((state) => state.main.isAuth)
+  const dispatch = useDispatch()
+  const onlogin = () => {
+    dispatch(changeAuth())
+    console.log(auth)
+  }
   return (
     <>
       <div className='wrapper'>
-        <JoinComponent></JoinComponent>
+        <JoinComponent onlogin={onlogin}></JoinComponent>
       </div>
     </>
   )
