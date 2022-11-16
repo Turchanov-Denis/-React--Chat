@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client'
 
-const connectSocket = (port='http://localhost:3000') => { io(port) }
+const socket = io('http://localhost:3000')
 
-export default connectSocket
+export default socket

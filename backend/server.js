@@ -16,11 +16,16 @@ app.post('/rooms', (req, res) => {
     if (!rooms.has(roomId)) {
         rooms.set(roomId, new Map([['users', new Map()], ['messages', []]]))
     }
-    console.log(rooms.keys())
     res.json([...rooms.keys()])
 })
 io.on('connection', (socket) => {
-    res.send();
+    socket.on('ROOM:JOIN',({roomId,userName})=>{
+        socket.join(roomId)
+        rooms.get(roomId).get('users').set(socket.id,userName)
+        const users = [...rooms.get(roomId).get('users').values()]
+        socket.to(roomId).emit('ROOM:JOINED', users)
+
+    })
 
 })
 

@@ -3,11 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 export const mainSlicer = createSlice({
   name: 'mainSlicer',
   initialState: {
-    isAuth: false,
+    joined: false,
+    roomId: null,
+    userName: null,
   },
   reducers: {
-    changeAuth(state) {
-        state.isAuth = !state.isAuth
+    changeAuth(state, action) {
+     
+      state.joined = !state.joined
+      state.roomId = action.payload.roomId
+      state.userName = action.payload.userName
+      
     }
   },
 })
