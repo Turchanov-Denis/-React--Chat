@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import connectSocket from '../socket';
 import axios from 'axios'
+import '../scss/join.scss'
+
 
 export default function JoinComponent({ onlogin }) {
   const [roomId, setRoomId] = useState('')
@@ -17,7 +19,7 @@ export default function JoinComponent({ onlogin }) {
   const onJoin = async () => {
     if (!roomId || !userName) { return alert('Fill field') }
     setLoading(prev => !prev)
-    const obj = {roomId,userName}
+    const obj = { roomId, userName }
     await axios.post('http://localhost:3000/rooms', { roomId, userName })
     onlogin(obj)
   }

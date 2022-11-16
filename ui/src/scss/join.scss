@@ -1,0 +1,11 @@
+.join {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    input {
+        padding-left: 10px;
+        margin-bottom: 15px;
+        min-height: 40px;
+    }
+}
