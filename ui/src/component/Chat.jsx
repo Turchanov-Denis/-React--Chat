@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../scss/chat.scss'
 
 export default function Chat() {
     return (
@@ -16,11 +16,11 @@ export default function Chat() {
                     <div className='message'><p>Lorem</p> <div><span>Test user</span></div></div>
                 </div>
                 <div className='chat__field'>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div className="form-group">
+                        
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" className="btn btn-primary">Primary</button>
                 </div>
             </div>
         </div>

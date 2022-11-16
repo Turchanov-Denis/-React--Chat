@@ -4,6 +4,7 @@ import JoinComponent from './component/JoinComponent';
 import { useSelector, useDispatch } from 'react-redux'
 import { changeAuth } from './redux/mainSlicer';
 import socket from './socket'
+import Chat from './component/Chat';
 function App() {
   const joined = useSelector((state) => state.main.joined)
   const dispatch = useDispatch()
@@ -23,7 +24,8 @@ function App() {
   return (
     <>
       <div className='wrapper'>
-        {!joined && <JoinComponent onlogin={onlogin}></JoinComponent>}
+        {/* {!joined && <JoinComponent onlogin={onlogin}></JoinComponent>} */}
+        <Chat></Chat>
       </div>
     </>
   )
