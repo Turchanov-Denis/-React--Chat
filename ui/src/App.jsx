@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './scss/style.scss'
 import JoinComponent from './component/JoinComponent';
 import { useSelector, useDispatch } from 'react-redux'
-import { changeAuth, setUsers,setMessages } from './redux/mainSlicer';
+import { changeAuth, setUsers,setMessages,updateMessages } from './redux/mainSlicer';
 // import { io } from 'socket.io-client'
 import axios from 'axios';
 import socket from './socket'
@@ -19,8 +19,8 @@ function App() {
     socket.emit('ROOM:JOIN', { roomId, userName })
     const res = await axios.get(`http://localhost:3000/rooms/${roomId}`);
     console.log("res",res.data);
-    if (res.data.messages) {}
-    dispatch(setMessages(res.data.messages))
+    if (res.data.messages.length > 0 ) {dispatch(setMessages(res.data.messages))}
+    
     dispatch(setUsers({ users: [...res.data.users] }))
     dispatch(changeAuth({ roomId, userName }))
     
@@ -35,7 +35,7 @@ function App() {
     })
     socket.on('ROOM:NEW_MESSAGE', (messages) => {
       console.log('get',messages);
-      dispatch(setMessages(messages))
+      dispatch(updateMessages(messages))
     })
   }, [])
 

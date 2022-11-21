@@ -20,12 +20,17 @@ export const mainSlicer = createSlice({
       state.users = action.payload.users
     },
     setMessages(state, action) {
+      console.log('setMessages',action.payload);
+      state.messages = action.payload
+    },
+    updateMessages(state, action) {
+      console.log('setMessages',action.payload);
       state.messages.push(action.payload)
-    }
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { changeAuth, setUsers, setMessages } = mainSlicer.actions
+export const { changeAuth, setUsers, setMessages,updateMessages } = mainSlicer.actions
 
 export default mainSlicer.reducer
