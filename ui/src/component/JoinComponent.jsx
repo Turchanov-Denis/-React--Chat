@@ -6,8 +6,8 @@ import axios from 'axios'
 import '../scss/join.scss'
 
 
-export default function JoinComponent({ onlogin }) {
-  const [roomId, setRoomId] = useState('')
+export default function JoinComponent({ onlogin,users }) {
+  const [roomId, setRoomId] = useState(1)
   const [userName, setUserName] = useState('')
   const [loading, setLoading] = useState(true)
   const inputRoomHandler = (event) => {
@@ -25,7 +25,9 @@ export default function JoinComponent({ onlogin }) {
   }
   return (
     <div className='join'>
-      <input tepe='text' placeholder='Room ID' value={roomId} onChange={inputRoomHandler}></input>
+      <h1>Chat</h1>
+      <img src='Hgj.png'></img>
+      {/* <input tepe='text' placeholder='Room ID' value={roomId} onChange={inputRoomHandler}></input> */}
       <input tepe='text' placeholder='Name' value={userName} onChange={inputNameHandler}></input>
       <Button disabled={!loading} onClick={onJoin} variant="outline-primary" >{(loading) ? 'Join' : 'Joining...'}</Button>
     </div>

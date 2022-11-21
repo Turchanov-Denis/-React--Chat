@@ -1,11 +1,27 @@
+$width-elem: 300px;
 .join {
     width: 400px;
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     input {
-        padding-left: 10px;
+        // padding-left: 10px;
+        width: $width-elem;
         margin-bottom: 15px;
         min-height: 40px;
+        font-size: 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.147);
+    }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    button {
+        width: $width-elem;
+    }
+    h1 {
+        font-weight: 300;
     }
 }
