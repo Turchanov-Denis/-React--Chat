@@ -19,12 +19,13 @@ app.post('/rooms', (req, res) => {
     res.json([...rooms.keys()])
 })
 io.on('connection', (socket) => {
+    console.log(socket.id)
     socket.on('ROOM:JOIN',({roomId,userName})=>{
         socket.join(roomId)
         rooms.get(roomId).get('users').set(socket.id,userName)
         const users = [...rooms.get(roomId).get('users').values()]
+        console.log(rooms,roomId,users)
         socket.to(roomId).emit('ROOM:JOINED', users)
-
     })
 
 })

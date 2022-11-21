@@ -12,7 +12,6 @@ export const mainSlicer = createSlice({
       state.joined = !state.joined
       state.roomId = action.payload.roomId
       state.userName = action.payload.userName
-
     }
   },
 })
