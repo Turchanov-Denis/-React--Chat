@@ -20,7 +20,7 @@ export const mainSlicer = createSlice({
       state.users = action.payload.users
     },
     setMessages(state, action) {
-      state.messages = action.payload.messages
+      state.messages.push(action.payload)
     }
   },
 })

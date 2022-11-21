@@ -31,9 +31,13 @@ io.on('connection', (socket) => {
         rooms.get(roomId).get('users').set(socket.id, userName)
         const users = [...rooms.get(roomId).get('users').values()]
         socket.to(roomId).emit('ROOM:SET_USERS', users)
-
-
-
+    }
+    )
+    socket.on('ROOM:NEW_MESSAGE', ({ roomId, userName, text }) => {
+        const obj = { userName, text }
+        console.log(obj)
+        rooms.get(roomId).get('messages').push(obj)
+        socket.to(roomId).emit('ROOM:NEW_MESSAGE', { userName, text })
     }
     )
     socket.on('disconnect', () => {
@@ -42,7 +46,7 @@ io.on('connection', (socket) => {
             if (value.get('users').delete(socket.id)) {
                 const users = [...rooms.get(roomId).get('users').values()]
                 socket.to(roomId).emit('ROOM:SET_USERS', users)
-                console.log(users);
+                
             }
         })
     })
