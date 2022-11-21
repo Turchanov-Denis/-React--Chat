@@ -18,7 +18,10 @@ function App() {
     await axios.post('http://localhost:3000/rooms', { roomId, userName })
     socket.emit('ROOM:JOIN', { roomId, userName })
     const res = await axios.get(`http://localhost:3000/rooms/${roomId}`);
-    dispatch(setUsers({ users: [userName] }))
+    console.log("res",res.data);
+    if (res.data.messages) {}
+    dispatch(setMessages(res.data.messages))
+    dispatch(setUsers({ users: [...res.data.users] }))
     dispatch(changeAuth({ roomId, userName }))
     
   }

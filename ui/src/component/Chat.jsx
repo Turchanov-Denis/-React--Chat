@@ -1,10 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useRef,useEffect } from 'react'
 import '../scss/chat.scss'
 import socket from '../socket.js'
 export default function Chat({ users, messages, userName,messageHelper }) {
     const [text, setMessage] = useState('')
-
+    const messagesRef = useRef(null)
     const areaHelper = (e) => {
         console.log(messages);
         setMessage(e.target.value)
@@ -14,7 +14,9 @@ export default function Chat({ users, messages, userName,messageHelper }) {
         messageHelper({ userName, text })
         setMessage('')
     }
-    
+    useEffect(()=>{
+        messagesRef.current.scrollTo(0,99999)
+    },[messages])
     return (
         <div className='chat'>
             <div className='chat__users'>
@@ -24,7 +26,7 @@ export default function Chat({ users, messages, userName,messageHelper }) {
                 </ul>
             </div>
             <div className='chat__messages'>
-                <div className='messeges'>
+                <div ref={messagesRef} className='messages'>
                     {messages.length > 0 && messages.map(message => <div className='message'><p>{message.text}</p> <div><span>{message.userName +'    '+ (new Date()).getHours() + ':' + (new Date()).getMinutes() }</span></div></div>)}
                     
                 </div>

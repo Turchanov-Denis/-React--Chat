@@ -10,11 +10,14 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server, { cors: { origin: "*" } });
 const rooms = new Map(); //fake database
 app.get('/rooms/:id', (req, res) => {
-    const roomId = req.params.id
+    
+    const roomId = Number(req.params.id)
+
     const obj = rooms.has(roomId) ? {
         users: [...rooms.get(roomId).get('users').values()],
         messages: [...rooms.get(roomId).get('messages').values()]
     } : { users: [], messages: [] }
+    console.log('server',obj);
     res.json(obj)
 })
 app.post('/rooms', (req, res) => {
