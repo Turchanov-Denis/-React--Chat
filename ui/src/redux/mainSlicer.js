@@ -9,11 +9,10 @@ export const mainSlicer = createSlice({
   },
   reducers: {
     changeAuth(state, action) {
-     
       state.joined = !state.joined
       state.roomId = action.payload.roomId
       state.userName = action.payload.userName
-      
+
     }
   },
 })
