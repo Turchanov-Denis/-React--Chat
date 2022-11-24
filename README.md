@@ -8,10 +8,11 @@ Chat for integration in app.
 
 
 Loggin: 
-![Loggin]('ui\public\Loggin.png')
+
+![Loggin](https://github.com/Turchanov-Denis/-React--Chat/blob/master/ui/public/Loggin.png) 
 
 
 Chat:
 
-![Chat]('./ui/public/Chat.png')
+![Chat](https://github.com/Turchanov-Denis/-React--Chat/blob/master/ui/public/chat.png)
 
